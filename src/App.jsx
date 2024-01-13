@@ -1,6 +1,24 @@
+import { useState } from "react";
+import Cards from "./components/Cards";
+import { Instructions, Scores } from "./components/utils";
 import "./styles/App.css";
 
 function App() {
+  const [pokemons, setPokemons] = useState([]),
+    [score, setScore] = useState([]);
+
+  const states = {
+    pokemons,
+    setPokemons,
+    score,
+    setScore
+  };
+
+  function resetScore() {
+    // TODO
+    return;
+  }
+
   return (
     <>
       <header>
@@ -8,10 +26,10 @@ function App() {
       </header>
       <main>
         <div>
-          {/* Instructions */}
-          {/* Scores */}
+          <Instructions />
+          <Scores states={states} />
         </div>
-        {/* Cards */}
+        <Cards states={states} resetScore={resetScore} />
       </main>
       <footer>Made by @climaxmba - GitHub</footer>
     </>
