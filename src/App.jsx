@@ -28,33 +28,27 @@ function App() {
     return;
   }
 
-  useEffect(() => {
-    const limit = 10;
-
-    if (clickedIds.length === limit)
-      (async () => {
-        try {
-          const pokemonData = await pokeapi.getPokemonsList({
-            limit,
-            offset: currOffset,
-          });
-          setPokemons(
-            pokemonData.map((data) => {
-              return { name: data.name, id: data.id, sprite: data.sprite };
-            })
-          );
-        } catch (error) {
-          // TODO: Display Error
-          console.error(error);
-        }
-      })();
-    else {
-      // Shuffle pokemons
-      console.log("else");
-      setPokemons([...pokemons].sort(() => Math.random() - 0.5));
+  async function loadNewPokemons({ limit = 10, offset = 1 }) {
+    try {
+      const pokemonData = await pokeapi.getPokemonsList({
+        limit,
+        offset,
+      });
+      setPokemons(
+        pokemonData.map((data) => {
+          return { name: data.name, id: data.id, sprite: data.sprite };
+        })
+      );
+    } catch (error) {
+      // TODO: Display Error
+      console.error(error);
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [clickedIds.length]);
+  }
+
+  // OnStart
+  useEffect(() => {
+    loadNewPokemons({});
+  }, []);
 
   return (
     <>
@@ -66,7 +60,11 @@ function App() {
           <Instructions />
           <Scores states={states} />
         </div>
-        <Cards states={states} resetScore={resetScore} />
+        <Cards
+          states={states}
+          resetScore={resetScore}
+          loadNewPokemons={loadNewPokemons}
+        />
       </main>
       <footer>Made by @climaxmba - GitHub</footer>
     </>

@@ -1,10 +1,11 @@
-export default function Cards({ states, resetScore }) {
+export default function Cards({ states, resetScore, loadNewPokemons }) {
   const reshuffle = (arr) => arr.sort(() => Math.random() - 0.5);
 
   const handleCardClick = (e) => {
-    const id = e.currentTarget.getAttribute("data-card");
+    const id = e.currentTarget.getAttribute("data-pokemon-id");
 
     if (states.clickedIds.includes(id)) {
+      // GameOver
       resetScore(true);
       states.setPokemons(
         states.clickedIds.length === states.pokemons.length
@@ -12,7 +13,12 @@ export default function Cards({ states, resetScore }) {
           : states.setPokemons([...reshuffle(states.pokemons)])
       );
     } else {
-      states.setClickedIds([...states.clickedIds, id]);
+      if (states.clickedIds.length === 10 /* limit = 10 */) {
+        // Load new data
+        const nextOffset = states.currOffset + 10;
+        loadNewPokemons({ offset: nextOffset });
+        states.setCurrOffset(nextOffset);
+      } else states.setClickedIds([...states.clickedIds, id]);
     }
   };
 
@@ -23,7 +29,7 @@ export default function Cards({ states, resetScore }) {
           <div
             className="cards"
             key={pokemon.id}
-            data-card={pokemon.id}
+            data-pokemon-id={pokemon.id}
             onClick={handleCardClick}
           >
             <img src={pokemon.sprite} alt="" />
