@@ -28,17 +28,23 @@ function App() {
     return;
   }
 
-  async function loadNewPokemons({ limit = 10, offset = 1 }) {
+  async function loadNewPokemons({ limit = 10, offset = 0 }) {
     try {
       const pokemonData = await pokeapi.getPokemonsList({
         limit,
         offset,
       });
-      setPokemons(
-        pokemonData.map((data) => {
-          return { name: data.name, id: data.id, sprite: data.sprite };
-        })
-      );
+      const pokemonsList = [];
+      await pokemonData.results.forEach(async (data) => {
+        const characterData = await pokeapi.resource(data.url);
+        pokemonsList.push({
+          name: data.name,
+          id: data.name,
+          sprite: characterData.sprites["front_default"],
+        });
+      });
+      console.log(pokemonsList);
+      setPokemons(pokemonsList);
     } catch (error) {
       // TODO: Display Error
       console.error(error);
