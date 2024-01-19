@@ -10,7 +10,7 @@ function App() {
   const [pokemons, setPokemons] = useState([]),
     [score, setScore] = useState([]),
     [clickedIds, setClickedIds] = useState([]),
-    [currOffset, setCurrOffset] = useState(1);
+    [currOffset, setCurrOffset] = useState(0);
 
   const states = {
     pokemons,
@@ -66,7 +66,7 @@ function App() {
       <main>
         <div>
           <Instructions />
-          <Scores states={states} />
+          <Scores states={states} resetScore={resetScore} />
         </div>
         <Cards
           states={states}

@@ -9,7 +9,7 @@ function Instructions() {
   );
 }
 
-function Scores({ states }) {
+function Scores({ states, resetScore }) {
   const [highScore, setHighScore] = useState(0);
 
   // useEffect()

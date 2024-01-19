@@ -3,22 +3,29 @@ export default function Cards({ states, resetScore, loadNewPokemons }) {
 
   const handleCardClick = (e) => {
     const id = e.currentTarget.getAttribute("data-pokemon-id");
+    console.log(states.clickedIds);
 
     if (states.clickedIds.includes(id)) {
+      // console.log("Game Over");
       // GameOver
       resetScore(true);
-      states.setPokemons(
-        states.clickedIds.length === states.pokemons.length
-          ? []
-          : states.setPokemons([...reshuffle(states.pokemons)])
-      );
+      states.setPokemons([...reshuffle(states.pokemons)]);
     } else {
-      if (states.clickedIds.length === 10 /* limit = 10 */) {
+      if (
+        states.clickedIds.length ===
+        states.currOffset + 10 - (states.currOffset / 10 + 1)
+      ) {
+        // console.log("Load new data");
         // Load new data
         const nextOffset = states.currOffset + 10;
         loadNewPokemons({ offset: nextOffset });
         states.setCurrOffset(nextOffset);
-      } else states.setClickedIds([...states.clickedIds, id]);
+      } else {
+        // console.log("Reshuffle");
+        // Reshuffle
+        states.setClickedIds([...states.clickedIds, id]);
+        states.setPokemons([...reshuffle(states.pokemons)]);
+      }
     }
   };
 
