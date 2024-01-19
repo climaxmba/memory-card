@@ -35,15 +35,17 @@ function App() {
         offset,
       });
       const pokemonsList = [];
-      await pokemonData.results.forEach(async (data) => {
+
+      for (let i = 0; i < pokemonData.results.length; i++) {
+        const data = pokemonData.results[i];
         const characterData = await pokeapi.resource(data.url);
         pokemonsList.push({
           name: data.name,
           id: data.name,
           sprite: characterData.sprites["front_default"],
         });
-      });
-      console.log(pokemonsList);
+      }
+      
       setPokemons(pokemonsList);
     } catch (error) {
       // TODO: Display Error
