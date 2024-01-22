@@ -1,5 +1,8 @@
 export default function Cards({ states, resetScore, loadNewPokemons }) {
   const reshuffle = (arr) => arr.sort(() => Math.random() - 0.5);
+  const reachedBreakPoint = () =>
+    states.clickedIds.length ===
+    states.currOffset + 10 - (states.currOffset / 10 + 1);
 
   const handleCardClick = (e) => {
     const id = e.currentTarget.getAttribute("data-pokemon-id");
@@ -11,12 +14,10 @@ export default function Cards({ states, resetScore, loadNewPokemons }) {
       resetScore(true);
       states.setPokemons([...reshuffle(states.pokemons)]);
     } else {
-      if (
-        states.clickedIds.length ===
-        states.currOffset + 10 - (states.currOffset / 10 + 1)
-      ) {
+      if (reachedBreakPoint()) {
         // console.log("Load new data");
         // Load new data
+        states.setIsLoading(true);
         const nextOffset = states.currOffset + 10;
         loadNewPokemons({ offset: nextOffset });
         states.setCurrOffset(nextOffset);
@@ -31,7 +32,7 @@ export default function Cards({ states, resetScore, loadNewPokemons }) {
 
   return (
     <div id="cards-contr">
-      {states.pokemons.length ? (
+      {!states.isLoading ? (
         states.pokemons.map((pokemon) => (
           <div
             className="cards"

@@ -10,7 +10,8 @@ function App() {
   const [pokemons, setPokemons] = useState([]),
     [score, setScore] = useState([]),
     [clickedIds, setClickedIds] = useState([]),
-    [currOffset, setCurrOffset] = useState(0);
+    [currOffset, setCurrOffset] = useState(0),
+    [isLoading, setIsLoading] = useState(false);
 
   const states = {
     pokemons,
@@ -21,6 +22,8 @@ function App() {
     setClickedIds,
     currOffset,
     setCurrOffset,
+    isLoading,
+    setIsLoading,
   };
 
   function resetScore() {
@@ -45,12 +48,13 @@ function App() {
           sprite: characterData.sprites["front_default"],
         });
       }
-      
+
       setPokemons(pokemonsList);
     } catch (error) {
       // TODO: Display Error
       console.error(error);
     }
+    setIsLoading(false);
   }
 
   // OnStart
