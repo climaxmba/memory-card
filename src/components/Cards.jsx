@@ -1,5 +1,5 @@
 export default function Cards({ states, resetScore, loadNewPokemons }) {
-  const reshuffle = (arr) => arr.sort(() => Math.random() - 0.5);
+  const reshuffle = (arr) => arr;
   const reachedBreakPoint = () =>
     states.clickedIds.length ===
     states.currOffset + 10 - (states.currOffset / 10 + 1);

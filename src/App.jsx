@@ -8,7 +8,7 @@ const pokeapi = new Pokedex();
 
 function App() {
   const [pokemons, setPokemons] = useState([]),
-    [score, setScore] = useState([]),
+    [score, setScore] = useState(0),
     [clickedIds, setClickedIds] = useState([]),
     [currOffset, setCurrOffset] = useState(0),
     [isLoading, setIsLoading] = useState(false);
@@ -28,7 +28,7 @@ function App() {
 
   function resetScore() {
     // TODO
-    return;
+    setScore(0);
   }
 
   async function loadNewPokemons({ limit = 10, offset = 0 }) {

@@ -12,7 +12,11 @@ function Instructions() {
 function Scores({ states, resetScore }) {
   const [highScore, setHighScore] = useState(0);
 
-  // useEffect()
+  useEffect(() => {
+    states.setScore(states.clickedIds.length);
+    
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [states.clickedIds.length]);
 
   return (
     <div id="scores-contr">
