@@ -1,5 +1,5 @@
 export default function Cards({ states, resetScore, loadNewPokemons }) {
-  const reshuffle = (arr) => arr;
+  const reshuffle = (arr) => arr/* .sort(() => Math.random() - 0.5); */;
   const reachedBreakPoint = () =>
     states.clickedIds.length ===
     states.currOffset + 10 - (states.currOffset / 10 + 1);
@@ -32,7 +32,7 @@ export default function Cards({ states, resetScore, loadNewPokemons }) {
 
   return (
     <div id="cards-contr">
-      {!states.isLoading ? (
+      {(!states.isLoading && states.pokemons.length) ? (
         states.pokemons.map((pokemon) => (
           <div
             className="cards"
