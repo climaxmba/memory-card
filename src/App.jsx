@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { Pokedex } from "pokeapi-js-wrapper";
 import Cards from "./components/Cards";
 import { Instructions, Scores } from "./components/utils";
-import "./styles/App.css";
 
 const pokeapi = new Pokedex();
 
