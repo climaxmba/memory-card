@@ -9,14 +9,18 @@ function Instructions() {
   );
 }
 
-function Scores({ states, resetScore }) {
-  const [highScore, setHighScore] = useState(0);
+function Scores({ states }) {
+  const [highScore, setHighScore] = useState(0),
+    [prevScore, setPrivScore] = useState(states.score);
+
+  const score = states.score;
 
   useEffect(() => {
-    states.setScore(states.clickedIds.length);
-    
+    score < prevScore && setHighScore(prevScore);
+    setPrivScore(score);
+
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [states.clickedIds.length]);
+  }, [score]);
 
   return (
     <div id="scores-contr">
