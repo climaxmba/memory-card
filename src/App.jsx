@@ -67,10 +67,10 @@ function App() {
         <h1>Memory Card Game</h1>
       </header>
       <main>
-        <div>
-          <Instructions />
+        <section id="left-pannel">
           <Scores states={states} resetScore={resetScore} />
-        </div>
+          <Instructions />
+        </section>
         <Cards
           states={states}
           resetScore={resetScore}

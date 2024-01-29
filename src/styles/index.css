@@ -1,13 +1,14 @@
 @import url("./App.css");
+@import url("./utils.css");
 
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: monospace;
   line-height: 1.5;
   font-weight: 400;
 
   color-scheme: light dark;
   color: #213547;
-  background-color: #eefff4;
+  background-color: #ebf5f1;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -31,8 +32,7 @@ body {
 }
 
 h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+  margin: 1rem 0;
 }
 
 button {
