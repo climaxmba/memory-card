@@ -1,5 +1,5 @@
 export default function Cards({ states, resetScore, loadNewPokemons }) {
-  const reshuffle = (arr) => arr/* .sort(() => Math.random() - 0.5); */;
+  const reshuffle = (arr) => arr; /* .sort(() => Math.random() - 0.5); */
 
   const handleCardClick = (e) => {
     const id = e.currentTarget.getAttribute("data-pokemon-id");
@@ -26,7 +26,7 @@ export default function Cards({ states, resetScore, loadNewPokemons }) {
       } else {
         // Reshuffle
         // console.log("Reshuffle");
-        
+
         states.setClickedIds([...states.clickedIds, id]);
         states.setPokemons([...reshuffle(states.pokemons)]);
       }
@@ -36,22 +36,25 @@ export default function Cards({ states, resetScore, loadNewPokemons }) {
   };
 
   return (
-    <div id="cards-contr">
-      {(!states.isLoading && states.pokemons.length) ? (
-        states.pokemons.map((pokemon) => (
-          <div
-            className="cards"
-            key={pokemon.id}
-            data-pokemon-id={pokemon.id}
-            onClick={handleCardClick}
-          >
-            <img src={pokemon.sprite} alt="" />
-            <div className="pokemon-name">{pokemon.name}</div>
-          </div>
-        ))
-      ) : (
-        <p>Loading...</p>
-      )}
-    </div>
+    <>
+      <h2>Cards</h2>
+      <div id="cards-contr">
+        {!states.isLoading && states.pokemons.length ? (
+          states.pokemons.map((pokemon) => (
+            <div
+              className="cards clickable"
+              key={pokemon.id}
+              data-pokemon-id={pokemon.id}
+              onClick={handleCardClick}
+            >
+              <img src={pokemon.sprite} alt="" />
+              <div className="pokemon-name">{pokemon.name}</div>
+            </div>
+          ))
+        ) : (
+          <p>Loading...</p>
+        )}
+      </div>
+    </>
   );
 }

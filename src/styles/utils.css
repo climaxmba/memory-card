@@ -1,6 +1,5 @@
-#scores-contr > span:nth-child(2n)::before {
-  content: "|";
-  margin: 0 1.5ch;
+.clickable {
+  cursor: pointer;
 }
 
 .rounded-white-bg {
@@ -8,4 +7,9 @@
   padding: 0.8rem;
   border-radius: 8px;
   background-color: white;
+}
+
+#scores-contr > span:nth-child(2n)::before {
+  content: "|";
+  margin: 0 1.5ch;
 }

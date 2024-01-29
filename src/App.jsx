@@ -71,11 +71,13 @@ function App() {
           <Scores states={states} resetScore={resetScore} />
           <Instructions />
         </section>
-        <Cards
-          states={states}
-          resetScore={resetScore}
-          loadNewPokemons={loadNewPokemons}
-        />
+        <section id="right-pannel">
+          <Cards
+            states={states}
+            resetScore={resetScore}
+            loadNewPokemons={loadNewPokemons}
+          />
+        </section>
       </main>
       <footer>Made by @climaxmba - GitHub</footer>
     </>
