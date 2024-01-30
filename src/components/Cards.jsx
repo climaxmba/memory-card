@@ -9,7 +9,9 @@ export default function Cards({ states, resetScore, loadNewPokemons }) {
       // GameOver
       // console.log("Game Over");
 
+      // Reset pokemons data
       resetScore(true);
+      states.setClickedIds([]);
       states.setPokemons([...reshuffle(states.pokemons)]);
     } else {
       if (states.clickedIds.length === 9) {
