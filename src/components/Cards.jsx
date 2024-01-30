@@ -1,12 +1,13 @@
+import { useEffect, useState } from "react";
+
 export default function Cards({ states, resetScore, loadNewPokemons }) {
-  const reshuffle = (arr) => arr; /* .sort(() => Math.random() - 0.5); */
+  const reshuffle = (arr) => arr.sort(() => Math.random() - 0.5);
+  const [meetError, setMeetError] = useState(false);
 
   const handleCardClick = (e) => {
     const id = e.currentTarget.getAttribute("data-pokemon-id");
     if (states.clickedIds.includes(id)) {
       // GameOver
-      // console.log("Game Over");
-
       // Reset pokemons data
       resetScore(true);
       states.setClickedIds([]);
@@ -14,8 +15,6 @@ export default function Cards({ states, resetScore, loadNewPokemons }) {
     } else {
       if (states.clickedIds.length === 9) {
         // Load new data
-        // console.log("Load new data");
-
         states.setIsLoading(true);
 
         const nextOffset = states.currOffset + 10;
@@ -25,8 +24,6 @@ export default function Cards({ states, resetScore, loadNewPokemons }) {
         states.setClickedIds([]);
       } else {
         // Reshuffle
-        // console.log("Reshuffle");
-
         states.setClickedIds([...states.clickedIds, id]);
         states.setPokemons([...reshuffle(states.pokemons)]);
       }
@@ -34,6 +31,10 @@ export default function Cards({ states, resetScore, loadNewPokemons }) {
       states.setScore(states.score + 1);
     }
   };
+
+  useEffect(() => {
+    states.errorMsg && setMeetError(true);
+  }, [states.errorMsg]);
 
   return (
     <>
@@ -51,6 +52,8 @@ export default function Cards({ states, resetScore, loadNewPokemons }) {
               <div className="pokemon-name">{pokemon.name}</div>
             </div>
           ))
+        ) : meetError ? (
+          <p>Error! Refresh this page to restart.</p>
         ) : (
           <p>Loading...</p>
         )}
