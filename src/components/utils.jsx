@@ -38,4 +38,14 @@ function Scores({ states }) {
   );
 }
 
-export { Instructions, Scores };
+function Error({ states }) {
+  const message = states.errorMsg;
+
+  return (
+    <div id="error-msg" data-error={message}>
+      {message}
+    </div>
+  );
+}
+
+export { Instructions, Scores, Error };

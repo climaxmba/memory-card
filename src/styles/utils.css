@@ -9,6 +9,21 @@
   background-color: white;
 }
 
+#error-msg {
+  display: none;
+  position: absolute;
+  z-index: 1;
+  bottom: 2rem;
+  padding: 8px 15px;
+  border-radius: 8px;
+  background-color: #bf5858;
+  color: white;
+  box-shadow: 0 3px 3px 1px #00000020;
+}
+#error-msg[data-error] {
+  display: block;
+}
+
 #scores-contr > span:nth-child(2n)::before {
   content: "|";
   margin: 0 1.5ch;

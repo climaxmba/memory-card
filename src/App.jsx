@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Pokedex } from "pokeapi-js-wrapper";
 import Cards from "./components/Cards";
-import { Instructions, Scores } from "./components/utils";
+import { Instructions, Scores, Error } from "./components/utils";
 
 const pokeapi = new Pokedex();
 
@@ -10,7 +10,8 @@ function App() {
     [score, setScore] = useState(0),
     [clickedIds, setClickedIds] = useState([]),
     [currOffset, setCurrOffset] = useState(0),
-    [isLoading, setIsLoading] = useState(false);
+    [isLoading, setIsLoading] = useState(false),
+    [errorMsg, setErrorMsg] = useState(null);
 
   const states = {
     pokemons,
@@ -23,6 +24,8 @@ function App() {
     setCurrOffset,
     isLoading,
     setIsLoading,
+    errorMsg,
+    setErrorMsg,
   };
 
   function resetScore() {
@@ -50,8 +53,14 @@ function App() {
 
       setPokemons(pokemonsList);
     } catch (error) {
-      // TODO: Display Error
       console.error(error);
+      setPokemons([]);
+
+      // Close error in 2.5s
+      setErrorMsg("Failed to load new Pokemons");
+      await new Promise((res) => {
+        setTimeout(() => res(setErrorMsg(null)), 2500);
+      });
     }
     setIsLoading(false);
   }
@@ -80,6 +89,7 @@ function App() {
         </section>
       </main>
       <footer>Made by @climaxmba - GitHub</footer>
+      <Error states={states} />
     </>
   );
 }

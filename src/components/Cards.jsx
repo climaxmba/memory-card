@@ -3,8 +3,6 @@ export default function Cards({ states, resetScore, loadNewPokemons }) {
 
   const handleCardClick = (e) => {
     const id = e.currentTarget.getAttribute("data-pokemon-id");
-    console.log(states.clickedIds);
-
     if (states.clickedIds.includes(id)) {
       // GameOver
       // console.log("Game Over");
