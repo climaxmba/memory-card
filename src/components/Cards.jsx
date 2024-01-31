@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import soundFx from "../soundFx";
 
 export default function Cards({ states, resetScore, loadNewPokemons }) {
   const reshuffle = (arr) => arr.sort(() => Math.random() - 0.5);
@@ -8,13 +9,14 @@ export default function Cards({ states, resetScore, loadNewPokemons }) {
     const id = e.currentTarget.getAttribute("data-pokemon-id");
     if (states.clickedIds.includes(id)) {
       // GameOver
-      // Reset pokemons data
-      resetScore(true);
+      soundFx.playBadChoice();
+      resetScore();
       states.setClickedIds([]);
       states.setPokemons([...reshuffle(states.pokemons)]);
     } else {
       if (states.clickedIds.length === 9) {
         // Load new data
+        soundFx.playPokemonsReload();
         states.setIsLoading(true);
 
         const nextOffset = states.currOffset + 10;
@@ -24,6 +26,7 @@ export default function Cards({ states, resetScore, loadNewPokemons }) {
         states.setClickedIds([]);
       } else {
         // Reshuffle
+        soundFx.playGoodChoice();
         states.setClickedIds([...states.clickedIds, id]);
         states.setPokemons([...reshuffle(states.pokemons)]);
       }
