@@ -1,6 +1,6 @@
 {
   "name": "memory-card",
-  "private": true,
+  "description": "Memory Card game using React and Pokeapi",
   "version": "0.0.0",
   "type": "module",
   "scripts": {
