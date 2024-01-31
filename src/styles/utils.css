@@ -1,6 +1,11 @@
 svg {
-  fill: black;
   width: 1.8rem;
+}
+
+.icon-text-wrapper {
+  display: flex;
+  gap: 0.8rem;
+  align-items: center;
 }
 
 .clickable {
@@ -14,9 +19,13 @@ svg {
   background-color: white;
 }
 
+#sounds-contr {
+  align-self: flex-start;
+}
+
 #error-msg {
   display: none;
-  position: absolute;
+  position: fixed;
   z-index: 1;
   bottom: 2rem;
   padding: 8px 15px;

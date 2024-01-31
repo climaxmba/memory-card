@@ -61,7 +61,7 @@ function SoundBtn() {
   }
 
   return (
-    <button type="button" id="sounds-contr" className="icon-wrapper" onClick={handleSoundBtnClick}>
+    <button type="button" id="sounds-contr" className="icon-text-wrapper clickable" title="Toggle Sounds" onClick={handleSoundBtnClick}>
       <span>Sounds</span>
       <Icon path={iconPath} />
     </button>
