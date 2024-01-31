@@ -1,9 +1,11 @@
-// import sounds
+import badChoiceSrc from "./assets/sounds/badChoice.mp3";
+import goodChoiceSrc from "./assets/sounds/goodChoice.mp3";
+import pokemonsReloadSrc from "./assets/sounds/pokemonsReload.mp3";
 
 const soundFx = (() => {
-  const _goodChoice = new Audio(),
-    _badChoice = new Audio(),
-    _pokemonsReload = new Audio();
+  const _goodChoice = new Audio(goodChoiceSrc),
+    _badChoice = new Audio(badChoiceSrc),
+    _pokemonsReload = new Audio(pokemonsReloadSrc);
 
   let soundsEnabled = true;
 
