@@ -10,7 +10,7 @@ Memory Card game built with React and Pokeapi.
 
 ## 🚀 How to play
 
-1. Click <a target="_blank" href="#">here</a> to open the game in your browser.
+1. Click <a target="_blank" href="https://climaxmba.github.io/memory-card/">here</a> to open the game in your browser.
 2. Click all cards without clicking each one more than once. The cards are reshufled for each click.
 3. New cards are loaded after clicking all cards on screen to continiue the game.
 
