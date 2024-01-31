@@ -1,4 +1,7 @@
 import { useState, useEffect } from "react";
+import soundFx from "../soundFx";
+import Icon from "@mdi/react";
+import { mdiVolumeHigh, mdiVolumeOff } from "@mdi/js";
 
 function Instructions() {
   return (
@@ -48,4 +51,21 @@ function Error({ states }) {
   );
 }
 
-export { Instructions, Scores, Error };
+function SoundBtn() {
+  const [soundsEnabled, setSoundsEnabled] = useState(soundFx.getSoundsEnabled());
+  const iconPath = soundsEnabled ? mdiVolumeHigh : mdiVolumeOff;
+
+  function handleSoundBtnClick() {
+    soundsEnabled ? soundFx.disableSounds() : soundFx.enableSounds();
+    setSoundsEnabled(!soundsEnabled);
+  }
+
+  return (
+    <button type="button" id="sounds-contr" className="icon-wrapper" onClick={handleSoundBtnClick}>
+      <span>Sounds</span>
+      <Icon path={iconPath} />
+    </button>
+  );
+}
+
+export { Instructions, Scores, Error, SoundBtn };

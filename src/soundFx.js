@@ -7,10 +7,10 @@ const soundFx = (() => {
     _badChoice = new Audio(badChoiceSrc),
     _pokemonsReload = new Audio(pokemonsReloadSrc);
 
-  let soundsEnabled = true;
+  let _soundsEnabled = true;
 
   function _playSound(audioElem) {
-    if (soundsEnabled) {
+    if (_soundsEnabled) {
       audioElem.load();
       audioElem.play();
     }
@@ -29,11 +29,15 @@ const soundFx = (() => {
   }
 
   function enableSounds() {
-    soundsEnabled = true;
+    _soundsEnabled = true;
   }
 
   function disableSounds() {
-    soundsEnabled = false;
+    _soundsEnabled = false;
+  }
+
+  function getSoundsEnabled() {
+    return _soundsEnabled;
   }
 
   return {
@@ -42,6 +46,7 @@ const soundFx = (() => {
     playPokemonsReload,
     enableSounds,
     disableSounds,
+    getSoundsEnabled,
   };
 })();
 
