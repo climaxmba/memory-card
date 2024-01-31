@@ -10,7 +10,8 @@
   gap: 1rem;
 }
 
-header, footer {
+header,
+footer {
   flex: 0 0 auto;
 }
 
@@ -50,10 +51,42 @@ main {
   box-shadow: 0 3px 12px 2px #00000020;
   transition: background-color 0.3s ease-in-out;
 }
+
 .cards:hover {
   background-color: #b5ffb5;
 }
 
 .pokemon-name {
   padding: 0.3rem 0;
+}
+
+@media screen and (width < 600px) {
+  main {
+    flex-direction: column;
+  }
+
+  #scores-contr-wrapper {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 2px 0 4px 1px #00000020;
+    border-radius: 0;
+  }
+  #scores-contr-wrapper h2 {
+    display: none;
+  }
+
+  footer {
+    margin-bottom: 2.5rem;
+  }
+}
+
+@media screen and (width < 400px) {
+  #cards-contr {
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  }
 }

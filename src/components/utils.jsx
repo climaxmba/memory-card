@@ -31,7 +31,7 @@ function Scores({ states }) {
   }, [score]);
 
   return (
-    <div className="rounded-white-bg">
+    <div id="scores-contr-wrapper" className="rounded-white-bg">
       <h2>Scores</h2>
       <div id="scores-contr">
         <span>Score: {states.score}</span>
