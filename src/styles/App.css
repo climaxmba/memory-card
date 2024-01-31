@@ -48,10 +48,10 @@ main {
   border-radius: 8px;
   background-color: white;
   box-shadow: 0 3px 12px 2px #00000020;
-  transition: transform 0.3s ease-in-out;
+  transition: background-color 0.3s ease-in-out;
 }
 .cards:hover {
-  transform: translateY(-1px);
+  background-color: #b5ffb5;
 }
 
 .pokemon-name {
