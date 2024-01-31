@@ -9,6 +9,14 @@
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/climaxmba/memory-card.git"
+  },
+  "bugs": {
+    "url": "https://github.com/climaxmba/memory-card/issues"
+  },
+  "homepage": "https://github.com/climaxmba/memory-card#readme",
   "dependencies": {
     "@mdi/js": "^7.4.47",
     "@mdi/react": "^1.6.1",
