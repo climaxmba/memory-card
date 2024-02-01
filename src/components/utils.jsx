@@ -52,8 +52,11 @@ function Error({ states }) {
 }
 
 function SoundBtn() {
-  const [soundsEnabled, setSoundsEnabled] = useState(soundFx.getSoundsEnabled());
+  const [soundsEnabled, setSoundsEnabled] = useState(
+    soundFx.getSoundsEnabled()
+  );
   const iconPath = soundsEnabled ? mdiVolumeHigh : mdiVolumeOff;
+  const btnTxt = `Sounds:${soundsEnabled ? "On" : "Off"}`;
 
   function handleSoundBtnClick() {
     soundsEnabled ? soundFx.disableSounds() : soundFx.enableSounds();
@@ -61,8 +64,15 @@ function SoundBtn() {
   }
 
   return (
-    <button type="button" id="sounds-contr" className="icon-text-wrapper clickable" title="Toggle Sounds" onClick={handleSoundBtnClick}>
-      <span>Sounds</span>
+    <button
+      type="button"
+      id="sounds-contr"
+      className="icon-text-wrapper clickable"
+      title="Toggle Sounds"
+      onClick={handleSoundBtnClick}
+      style={!soundsEnabled ? { backgroundColor: "white" } : {}}
+    >
+      <span>{btnTxt}</span>
       <Icon path={iconPath} />
     </button>
   );
