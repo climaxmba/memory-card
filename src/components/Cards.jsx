@@ -1,6 +1,15 @@
 import { useEffect, useState } from "react";
 import soundFx from "../soundFx";
 
+function Loading() {
+  return (
+    <div id="rings-contr">
+      <div className="rings"></div>
+      <div className="rings"></div>
+    </div>
+  );
+}
+
 export default function Cards({ states, resetScore, loadNewPokemons }) {
   const reshuffle = (arr) => arr.sort(() => Math.random() - 0.5);
   const [meetError, setMeetError] = useState(false);
@@ -56,9 +65,9 @@ export default function Cards({ states, resetScore, loadNewPokemons }) {
             </div>
           ))
         ) : meetError ? (
-          <p>Error! Refresh this page to restart.</p>
+          <p>⚠ Error: Failed to load new Pokemons!</p>
         ) : (
-          <p>Loading...</p>
+          <Loading />
         )}
       </div>
     </>

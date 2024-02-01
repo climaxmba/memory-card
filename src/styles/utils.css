@@ -42,3 +42,71 @@ svg {
   content: "|";
   margin: 0 1.5ch;
 }
+
+#rings-contr {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100px;
+}
+
+.rings {
+  border-radius: 50%;
+  position: fixed;
+  border-color: #009149 !important;
+}
+
+.rings:first-child {
+  border: 5px solid;
+  height: 150px;
+  width: 150px;
+  animation: ring1 2s ease-in-out infinite;
+}
+
+.rings:last-child {
+  border: 8px solid;
+  height: 60px;
+  width: 60px;
+  animation: ring2 1.5s ease-in-out infinite;
+}
+
+@keyframes ring1 {
+  from {
+    scale: 1;
+    opacity: 0.2;
+  }
+
+  50% {
+    scale: 0.5;
+    opacity: 0.1;
+  }
+
+  to {
+    scale: 1;
+    opacity: 0.2;
+  }
+}
+
+@keyframes ring2 {
+  from {
+    scale: 2;
+    opacity: 0.2;
+  }
+
+  50% {
+    scale: 1;
+    opacity: 0;
+  }
+
+  to {
+    scale: 2;
+    opacity: 0.2;
+  }
+}
