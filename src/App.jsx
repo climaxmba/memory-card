@@ -29,7 +29,6 @@ function App() {
   };
 
   function resetScore() {
-    // TODO
     setScore(0);
   }
 

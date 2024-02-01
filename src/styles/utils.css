@@ -19,6 +19,10 @@ svg {
   background-color: white;
 }
 
+#instructions-contr p {
+  margin: 0;
+}
+
 #sounds-contr {
   align-self: flex-start;
 }
@@ -54,7 +58,7 @@ svg {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: 100px;
+  min-height: 150px;
 }
 
 .rings {
