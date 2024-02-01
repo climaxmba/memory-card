@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import soundFx from "../soundFx";
+import soundFx from "../modules/soundFx";
 import Icon from "@mdi/react";
 import { mdiVolumeHigh, mdiVolumeOff } from "@mdi/js";
 

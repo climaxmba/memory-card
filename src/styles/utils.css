@@ -29,7 +29,7 @@ svg {
 
 #error-msg {
   display: none;
-  position: fixed;
+  position: absolute;
   z-index: 1;
   bottom: 2rem;
   padding: 8px 15px;

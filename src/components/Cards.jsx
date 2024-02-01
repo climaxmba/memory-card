@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import soundFx from "../soundFx";
+import soundFx from "../modules/soundFx";
 
 function Loading() {
   return (
