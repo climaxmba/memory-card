@@ -1,8 +1,9 @@
 @import url("./App.css");
 @import url("./utils.css");
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
 :root {
-  font-family: monospace;
+  font-family: 'Ubuntu Mono', monospace;
   line-height: 1.5;
   font-weight: 400;
 
