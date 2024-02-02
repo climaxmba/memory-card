@@ -16,7 +16,6 @@ Memory Card game built with React and Pokeapi.
 
 ## 🙏 Acknowledgement
 
-- [Pokeapi](https://pokeapi.co/) - Pokemon API.
-- [pokeapi-js-wrapper](https://github.com/PokeAPI/pokeapi-js-wrapper) - JavaScript Wrapper Library.
+- [Pokeapi](https://pokeapi.co/) - Pokemon API and Wrapper Library.
 - [Material Design Icons: Pictogrammers](https://pictogrammers.com/library/mdi/) - Icons.
 - [Pixbay](https://pixabay.com/sound-effects/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music) - Sound effects.
