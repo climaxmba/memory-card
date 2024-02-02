@@ -30,7 +30,7 @@ svg {
 
 #error-msg {
   display: none;
-  position: absolute;
+  position: fixed;
   z-index: 2;
   bottom: 2rem;
   padding: 8px 15px;
@@ -63,8 +63,8 @@ svg {
 }
 
 .rings {
+  position: absolute;
   border-radius: 50%;
-  position: fixed;
   border-color: #009149 !important;
 }
 
